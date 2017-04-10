@@ -70,14 +70,26 @@ MNC, VGG-16        | VOC 12 train        | VOC 12 val            | 65.0%       |
   USE_CUDNN := 1
   ```
 
-5. Build Caffe and pycaffe:
+5. Build Caffe:
     ```Shell
     cd $MNC_ROOT/caffe-mnc
     # If you have all of the requirements installed
     # and your Makefile.config in place, then simply do:
-    make -j8 && make pycaffe
+    make all -j8
+    make test -j8
+    make runtest -j8
     ```
+    If errors occur with tests realted to the GPU, just skip them by renaming e.g.
+    mv src/caffe/test/test_smooth_L1_loss_layer.cpp src/caffe/test/test_smooth_L1_loss_layer.cpp.orig
 
+6. Build pycaffe and test
+    ```Shell
+    cd $MNC_ROOT/caffe-mnc
+    make pycaffe
+    make distribute
+    python
+    >>> import caffe
+    ```
 ### Demo
 
 First, download the trained MNC model.
