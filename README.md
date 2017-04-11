@@ -94,7 +94,7 @@ MNC, VGG-16        | VOC 12 train        | VOC 12 val            | 65.0%       |
 
 First, download the trained MNC model.
 ```Shell
-./data/scripts/fetch_mnc_model.sh
+bash data/scripts/fetch_mnc_model.sh
 ``` 
 
 Run the demo:
